@@ -1,0 +1,23 @@
+
+a:hover {
+ outline: none;
+ text-decoration: none!important;
+}
+.dashboard-content  {
+  height: 100vh;
+}
+.left-sidebar {
+  width: 350px;
+}
+
+.right-content {
+  margin-top: 115px;
+}
+
+.left-sidebar .list-group {
+  margin-top: 135px;
+}
+
+.custom-pagination .page-item:first-child .page-link, .custom-pagination .page-item:last-child .page-link {
+   border-radius: 0;
+}
