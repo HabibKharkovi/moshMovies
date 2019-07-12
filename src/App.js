@@ -27,6 +27,19 @@ class App extends Component {
     });
   }
 
+  createNewMovie = (e, movie) => {
+    e.preventDefault();
+    let newMovie = { ...movie };
+    newMovie._id = Date.now();
+    newMovie.liked = false;
+    let movies = {newMovie, ...this.state.movies}
+
+    this.setState({
+      movies
+    })
+    console.log('new movie: ', movies, 'movies: ', this.state.movies)
+  }
+
   render() { 
     const { sidebarOpen, movies, genres } = this.state;
     return (  
@@ -45,6 +58,7 @@ class App extends Component {
           genres={genres}
           sidebarOpen={sidebarOpen}
           handleDelete={this.handleDelete}
+          createNewMovie={this.createNewMovie}
         />
       </div>
     </div>

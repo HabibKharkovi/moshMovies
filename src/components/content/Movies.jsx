@@ -13,7 +13,7 @@ class Moives extends Component {
     }
 
     render() { 
-        const { movies, sidebarOpen, handleDelete, genres } = this.props;
+        const { movies, sidebarOpen, handleDelete, genres, createNewMovie } = this.props;
         const { newMovie } = this.state;
         return ( 
             <div className={`right-content position-relative ${sidebarOpen ? `show` : '' }`}>
@@ -21,6 +21,7 @@ class Moives extends Component {
                 <MovieForm
                     newMovie={newMovie}
                     handleNewMovie={this.handleNewMovie}
+                    createNewMovie={createNewMovie}
                 /> 
                 :
                 <MoviesTable 
