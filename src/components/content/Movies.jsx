@@ -1,24 +1,12 @@
-import React from 'react';
+import React, { Component } from 'react';
+import Footer from '../footer/footer';
 
-const Dashboard = () => {
-    return ( 
-        <React.Fragment>
-        <div className="main-header bg-dark border-bottom position-fixed w-100">
-            <div className="container-fluid py-4">
-               <a href="#" className="display-4 text-light">Dashboard</a>
-            </div>
-        </div>
-        <div className="dashboard-content d-flex">
-            <div className="left-sidebar bg-dark">
-                <ul className="list-group list-group-flush">
-                    <li><a href="#" className='list-group-item bg-dark text-light'>Cras justo odio</a></li>
-                    <li><a href="#" className='list-group-item bg-dark text-light'>Dapibus ac facilisis in</a></li>
-                    <li><a href="#" className='list-group-item bg-dark text-light'>Morbi leo risus</a></li>
-                    <li><a href="#" className='list-group-item bg-dark text-light'>Porta ac consectetur ac</a></li>
-                    <li><a href="#" className='list-group-item bg-dark text-light'>Vestibulum at eros</a></li>
-                </ul>
-            </div>
-            <div className="right-content flex-grow-1">
+class Moives extends Component {
+    state = {  }
+    render() { 
+        const { movies, sidebarOpen } = this.props;
+        return ( 
+            <div className={`right-content position-relative ${sidebarOpen ? `show` : '' }`}>
                 <div className="bg-light mx-4 mt-4 p-4 border shadow-sm">
                     <button className="btn btn-dark rounded-0">New Movies</button>
                 </div>
@@ -35,31 +23,21 @@ const Dashboard = () => {
                         <table className="table table-dark w-100">
                             <thead>
                                 <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">First</th>
-                                    <th scope="col">Last</th>
-                                    <th scope="col">Handle</th>
+                                    <th scope="col">Title</th>
+                                    <th scope="col">Genre</th>
+                                    <th scope="col">Stock</th>
+                                    <th scope="col">Rating</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                {movies.map(movie => 
                                 <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>@twitter</td>
-                                </tr>
+                                    <td>{movie.title}</td>
+                                    <td>{movie.genre.name}</td>
+                                    <td>{movie.numberInStock}</td>
+                                    <td>{movie.dailyRentalRate}</td>
+                                </tr>    
+                                )}
                             </tbody>
                         </table>
                     </div>
@@ -79,10 +57,10 @@ const Dashboard = () => {
                         </li>
                     </ul>
                 </div>
+                <Footer/>
             </div>
-        </div>
-        </React.Fragment>
-     );
+         );
+    }
 }
  
-export default Dashboard;
+export default Moives;
